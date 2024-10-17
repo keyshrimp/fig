@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Top Frag</title>
+
+    <!-- Google Fonts for Inter, Abhaya Libre, and Inknut Antiqua -->
+    <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400&family=Inknut+Antiqua:wght@400&family=Inter:wght@400&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: url(Images/bgfig.png) no-repeat center center fixed;
+            background-size: cover; /* Ensure the background covers the entire screen */
+            display: flex; /* Use flexbox for full height */
+            flex-direction: column; /* Align children vertically */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: transparent;
+        }
+
+        .header .logo img {
+            width: 200px; 
+            height: auto; 
+        }
+
+        .header .search-bar {
+            flex-grow: 1; 
+            display: flex;
+            justify-content: center; 
+        }
+
+        .header .search-bar input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: 'Inter', sans-serif;
+            width: 250px; 
+        }
+
+        .header nav {
+            flex: 0 0 auto; 
+        }
+
+        .header nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: 400;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            padding: 5px 10px;
+            transition: all 0.3s ease; 
+        }
+
+        .header nav a:hover {
+            color: white; 
+            background-color: black; 
+            border-radius: 5px; 
+            padding: 5px 15px; 
+        }
+
+        .faq-content {
+            padding: 20px; /* Reduced padding */
+            flex-grow: 1; 
+            max-width: 800px; 
+            margin: auto; 
+        }
+
+        .faq-content h1 {
+            text-align: center; 
+            font-size: 48px; 
+            margin-bottom: 20px; 
+            font-family: 'Inknut Antiqua', serif; 
+        }
+
+        .faq-content p {
+            font-size: 18px; 
+            margin-bottom: 20px; 
+            line-height: 1.6; 
+            font-family: 'Abhaya Libre', serif;
+        }
+
+        footer {
+            background-color: transparent; 
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px; 
+        }
+
+        footer p {
+            color: #555;
+            font-family: 'Abhaya Libre', serif;
+        }
+
+        footer .social-icons a {
+            display: inline-block; 
+        }
+
+        footer .social-icons img {
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+        }
+        .logo video {
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.3); /* White with opacity */
+        padding: 10px;
+        }
+    </style>
+
+<script>
+    window.onload = function() {
+        // Load the click and hover sound
+        var clickSound = new Audio('Media/mixkit-cool-interface-click-tone-2568.wav');
+        var hoverSound = new Audio('Media/mixkit-cool-interface-click-tone-2568.wav'); // You can replace with a different sound
+
+        // Get all clickable elements (links, buttons, inputs, etc.)
+        var clickableElements = document.querySelectorAll('a, button, input[type="submit"], input[type="button"]');
+
+        // Add event listeners to play the sound when clicked
+        clickableElements.forEach(function(element) {
+            element.addEventListener('click', function() {
+                clickSound.play();
+            });
+        });
+
+        // Add event listeners to menu links to play sound on hover
+        var menuLinks = document.querySelectorAll('nav a');
+        menuLinks.forEach(function(link) {
+            link.addEventListener('mouseenter', function() {
+                hoverSound.play();
+            });
+        });
+    };
+</script>
+
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <video width="200" height="auto" autoplay muted loop>
+                    <source src="Images/Logo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder='"Ja Malone"' />
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Menu.html">Menu</a>
+            <a href="Products.html">Products</a>
+            <a href="FAQ.html">FAQ</a>
+            <a href="Payment.html">Payment</a>
+            <a href="About.html">About</a>
+        </nav>
+    </header>
+
+    <div class="faq-content">
+        <h1>FAQ</h1>
+        <p>Top Frag is a company that offers a wide variety of high-quality perfumes and scents to cater to all preferences. Finding the unique scent that represents our clients is something we are excited about.</p>
+        <p>The company announced a new policy regarding employee dress code. The company made an announcement about a change in the employee dress code policy. What types of fragrances are in stock?</p>
+        <p>We offer a variety of fragrances including cologne, eau de toilette, and eau de parfum for men and women. In our collection, we offer floral, woody, fruity, spiced, and clean fragrances.</p>
+        <p>The third idea discusses the importance of effective communication in a professional setting. What is the process for placing an order?</p>
+        <p>Placing an order on our website is easy. Simply browse through our selection, add your favorite scents to your cart, and proceed to checkout. We offer different payment choices to suit your convenience.</p>
+    </div>
+
+    <footer>
+        <p>©Copyright 2024. All Rights Reserved. Created By Khristian Pradilla</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/KhristianPradsss/" target="_blank">
+                <img src="Images/287739_facebook_icon.png" alt="Facebook">
+            </a>
+            <a href="https://github.com/keyshrimp" target="_blank">
+                <img src="Images/211904_social_github_icon.png" alt="GitHub">
+            </a>
+            <a href="https://www.instagram.com/_khriii?igsh=aDhmZnNyb2xtMnNs&utm_source=qr" target="_blank">
+                <img src="Images/5279112_camera_instagram_social media_instagram logo_icon.png" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>

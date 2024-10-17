@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfume Collection</title>
+
+    <!-- Google Fonts for Inter, Abhaya Libre, and Inknut Antiqua -->
+    <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400&family=Inknut+Antiqua:wght@400&family=Inter:wght@400&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: url(Images/bgfig.png) no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: transparent;
+        }
+
+        .header .logo {
+            flex: 0 0 auto;
+        }
+
+        .header img {
+            width: 200px;
+            height: auto;
+        }
+
+        .header .search-bar {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header .search-bar input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: 'Inter', sans-serif;
+            width: 250px;
+        }
+
+        .header nav {
+            flex: 0 0 auto;
+            display: flex; /* Show navigation by default on desktop */
+        }
+
+        .header nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: 400;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+        }
+
+        .header nav a:hover {
+            color: white;
+            background-color: black;
+            border-radius: 5px;
+            padding: 5px 15px;
+        }
+
+        .hamburger {
+            display: none; /* Hide by default */
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .burger-menu {
+            font-size: 30px;
+            cursor: pointer;
+            display: none; /* Hidden by default */
+            position: absolute; /* Make it absolute */
+            top: 10px; /* Adjust the top position */
+            right: 20px; /* Adjust the right position */
+        }
+
+        #mobile-menu {
+            display: none; /* Initially hidden */
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: #000;
+            padding: 10px;
+            width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #mobile-menu a {
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            text-decoration: none;
+            color: #FFF;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        #mobile-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+       /* Media Queries for Mobile and Tablet */
+@media only screen and (max-width: 1024px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-bar input {
+        width: 80%;
+    }
+
+    nav#desktop-menu {
+        display: none; /* Hide desktop nav on tablet and mobile */
+    }
+
+    .burger-menu {
+        display: block; /* Show burger menu on tablet and mobile */
+    }
+
+    #mobile-menu {
+        display: none; /* Initially hidden */
+    }
+
+    .search-bar {
+        width: 100%;
+        margin-left: auto;
+    }
+
+    .logo video {
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.3);
+        padding: 10px;
+        width: 30%;
+    }
+
+    .product {
+        width: 300px;
+        background-color: #333;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .burger-menu {
+        display: none; /* Hide burger menu on desktop */
+    }
+
+    nav#desktop-menu {
+        display: flex; /* Show desktop navigation */
+    }
+}
+
+
+        @media only screen and (max-width: 768px) {
+    .collection-item {
+        width: 150px !important; /* Mobile width */
+        height: 250px !important; /* Mobile height */
+    }
+}
+
+        /* Active Mobile Menu */
+        .menu-active {
+            display: block; /* Show the mobile menu when active */
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: black;
+            margin: 4px 0; /* Spacing between bars */
+            transition: 0.3s; /* Smooth transition */
+        }
+
+        .collection {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            flex-grow: 1;
+            max-width: 1000px;
+            margin: auto;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .collection-title {
+            text-align: center;
+            font-size: 48px;
+            margin: 20px 0;
+            font-family: 'Inknut Antiqua', serif;
+        }
+
+        .collection-item {
+    width: 230px; /* Default desktop width */
+    height: 450px; /* Default desktop height */
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+        .collection-item img {
+            width: 80%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .collection-item .perfume-name {
+            margin: 0;
+            font-size: 12px;
+            font-family: 'Inknut Antiqua', serif;
+            position: relative;
+            z-index: 1;
+        }
+
+        .collection-item p {
+            font-size: 20px;
+            font-family: 'Abhaya Libre', serif;
+        }
+
+        .more-button {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: #DADADA;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            text-align: right;
+        }
+
+        .more-button:hover {    
+            background-color: #000;
+        }
+
+        footer {
+            background-color: transparent;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+
+        footer p {
+            color: #555;
+            font-family: 'Abhaya Libre', serif;
+        }
+
+        footer .social-icons a {
+            display: inline-block;
+        }
+
+        footer .social-icons img {
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+        }
+
+        .logo video {
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 10px;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .header nav {
+                display: none; /* Hide nav by default on mobile */
+            }
+
+            .hamburger {
+                display: flex; /* Show hamburger on mobile */
+            }
+        }
+
+        /* Show the nav when the menu is active */
+        .menu-active nav {
+            display: flex; /* Show nav when the menu is active */
+            flex-direction: column; /* Stack items vertically */
+            position: absolute; /* Overlay on the page */
+            top: 50px; /* Position below the header */
+            right: 20px; /* Position from the right */
+            background-color: white; /* White background for the menu */
+            padding: 10px; /* Padding around the menu */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <video width="200" height="auto" autoplay muted loop>
+                    <source src="Images/Logo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder='"Ja Malone"' />
+        </div>
+
+        <!-- Hamburger Icon (Mobile Only) -->
+        <div class="burger-menu" id="hamburger-icon" onclick="document.querySelector('nav').classList.toggle('menu-active');">
+            ☰ <!-- Hamburger icon -->
+        </div>
+
+        <!-- Navigation (Desktop) -->
+        <nav id="desktop-menu">
+            <a href="index.html">Home</a>
+            <a href="Menu.html">Menu</a>
+            <a href="Products.html">Products</a>
+            <a href="Payment.html">Payment</a>
+            <a href="About.html">About</a>
+        </nav>
+    </header>
+
+    <!-- Collection Section -->
+    <section class="collection">
+        <a href="Index.html" class="collection-item" style="background-color: gray;">
+            <p>"HOME"</p>
+        </a>
+
+        <a href="Products.html" class="collection-item" style="background-color: gray;">
+            <p>"PRODUCTS"</p>
+        </a>
+
+        <a href="Payment.html" class="collection-item" style="background-color: gray;">
+            <p>"PAYMENT"</p>
+        </a>
+
+        <a href="About.html" class="collection-item" style="background-color: gray;">
+            <p>"ABOUT"</p>
+        </a>
+    </section>
+
+    <footer>
+        <p>©Copyright 2024. All Rights Reserved. Created By Khristian Pradilla</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/KhristianPradsss/" target="_blank">
+                <img src="Images/287739_facebook_icon.png" alt="Facebook">
+            </a>
+            <a href="https://github.com/keyshrimp" target="_blank">
+                <img src="Images/211904_social_github_icon.png" alt="GitHub">
+            </a>
+            <a href="https://www.instagram.com/_khriii?igsh=aDhmZnNyb2xtMnNs&utm_source=qr" target="_blank">
+                <img src="Images/5279112_camera_instagram_social media_instagram logo_icon.png" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const burgerIcon = document.getElementById('hamburger-icon');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        burgerIcon.onclick = function() {
+            mobileMenu.classList.toggle('menu-active');
+            document.querySelector('nav').classList.toggle('menu-active'); // Toggle desktop nav visibility
+        };
+
+        window.onload = function() {
+            // Load the click and hover sound
+            var clickSound = new Audio('Media/mixkit-cool-interface-click-tone-2568.wav');
+            var hoverSound = new Audio('Media/mixkit-cool-interface-click-tone-2568.wav'); // You can replace with a different sound
+
+            // Get all clickable elements (links, buttons, inputs, etc.)
+            var clickableElements = document.querySelectorAll('a, button, input[type="submit"], input[type="button"]');
+
+            // Add event listeners to play the sound when clicked
+            clickableElements.forEach(function(element) {
+                element.addEventListener('click', function() {
+                    clickSound.play();
+                });
+            });
+
+            // Add event listeners to menu links to play sound on hover
+            var menuLinks = document.querySelectorAll('nav a');
+            menuLinks.forEach(function(link) {
+                link.addEventListener('mouseenter', function() {
+                    hoverSound.play();
+                });
+            });
+        }
+    </script>
+</body>
+</html>
